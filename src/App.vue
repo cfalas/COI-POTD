@@ -1,28 +1,66 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<img alt="Vue logo" src="./assets/logo.png">
+		<problem-view :problem="problems[1]"/>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+	import ProblemView from './components/ProblemView.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	export default {
+		name: 'App',
+		components: {
+			ProblemView
+		},
+		data() {
+			return { 
+				problems: [
+					{
+						id: 0,
+						title: "Xylophone",
+						date: "12/06",
+						ojuz_name: "JOI18_xylophone",
+						url: "https://oj.uz/problems/JOI18_xylophone",
+						hints: [
+							"",
+							"",
+							"",
+							"",
+						]
+					},
+					{
+						id: 1,
+						title: "Combo",
+						date: "13/06",
+						ojuz_name: "IOI18_combo",
+						url: "https://oj.uz/problems/IOI18_combo",
+						hints: [
+							'1. Πολλές φορές στα interactive, ο μέγιστος αριθμός των queries βοηθά μας να "μαντέψουμε" την λύση, ή τουλάχιστον να έβρουμε την κατεύθυνση που εννα κινηθούμε. Δαμέ τα queries εν της τάξης του Ο(Ν), τζαι συγκεκριμένα για τους 100 πόντους πρέπει να κάμουμε <= N+2 queries. Άρα λογικά με κάποια περάσματα τζαι κάποιες ιδέες πρέπει να έβρουμε την απάντηση. ',
+							'2. Μια καλή ιδέα εν ότι αφού έχουμε Ν+2 queries, μπορεί η λύση να θέλει να βρίσκουμε σε κάθε βήμα 1 χαρακτήρα του string. ',
+							'3. Έστω ότι ήβραμε μέχρι τον x-οστο.Πώς μπορούμε τωρά να έβρουμε τον (x+1)οστο; Υπάρχουν κάποια πράματα που μας βοηθούν. ',
+							'4. Α. έχουμε 4 διαφορετικές τιμές για τον (x+1)οστό, όμως',
+							'4. Β. Ο πρώτος δεν θα ξαναεμφανιστεί στο string. Άρα ο (x+1)οστός μπορεί να πάρει 3 διαφορετικές τιμές. Επίσης ο πρώτος χαρακτήρας όποτε εμφανιστεί σε ένα query θα είναι σαν να "χωρίζει" 2 πιθανά strings.',
+							'4. Γ. Το query μας μπορεί να είναι μήκους 4Ν. Δεν είναι τυχαία η επιλογή.',
+							'Χρησιμοποιώντας τα τούτα, μπορούμε να έβρουμε τρόπο έτσι ώστε με 1 query να βρίσκουμε τον (x+1)οστο χαρακτήρα',
+							'5.  Έστω ότι ο πρώτος χαρακτήρας είναι το Α.',
+							'Το query θα είναι της μορφής "sBsXBsXXsXY", όπου s είναι η απάντηση μέχρι τον x-οστό χαρακτήρα. Αν η απάντηση του είναι x+1, τότε ο χαρακτήρας είναι το Β. Αν είναι x+2, τότε είναι το Χ, αλλιώς είναι το Υ',
+							'6  Για τον πρώτο χαρακτήρα μπορούμε να ρωτήσουμε 2 queries έτσι ώστε να τον βρούμε. Ρωτούμε "ΑΒ". Αν η απάντηση είναι >= 1, ελέγχουμε το Α(αν είναι 1 είναι Α αλλιώς είναι Β). Αν είναι 0, ελέγχουμε με παρόμοιο τρόπο τα ΧΥ.',
+						]
+					},
+				]
+			}
+		}
+	}
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+	margin-top: 60px;
 }
 </style>
