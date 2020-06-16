@@ -1,18 +1,24 @@
 <template>
-	<div id="app">
-		<div id="nav">
-			<router-link to="/">Home</router-link> |
-			<router-link to="/today">POTD</router-link> |
-			<router-link to="/list">Old Problems</router-link>
-		</div>
-		<router-view/>
-	</div>
+    <div>
+        <problem :problem="last_problem[0]"></problem>
+    </div>
 </template>
 
 <script>
-
+    import Problem from '@/components/Problem.vue'
+    import { db } from '@/firebase';
+    
 	export default {
-		name: 'App',
+        name: 'App',
+        components: {
+            Problem
+        },
+        firestore() {
+            return {
+                last_problem: db.collection('problems').orderBy('date', 'desc').limit(1),
+            }
+        }
+
 	}
 </script>
 

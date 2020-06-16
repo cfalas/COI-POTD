@@ -21,9 +21,9 @@
 <script>
 import Scoreboard from './Scoreboard.vue'
 export default {
-	name: 'problem-view',
+	name: 'problem',
 	props: {
-		problem: Object
+		problem: Object,
 	},
 	components: {
 		Scoreboard

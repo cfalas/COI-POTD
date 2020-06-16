@@ -1,18 +1,19 @@
 <template>
-	<div id="app">
-		<div id="nav">
-			<router-link to="/">Home</router-link> |
-			<router-link to="/today">POTD</router-link> |
-			<router-link to="/list">Old Problems</router-link>
-		</div>
-		<router-view/>
-	</div>
+    <div>
+        <problem :problem="problem"></problem>
+    </div>
 </template>
 
 <script>
-
+    import Problem from '@/components/Problem.vue'
+    
 	export default {
-		name: 'App',
+        name: 'App',
+        components: {
+            Problem
+        },
+        props: ['problem']
+
 	}
 </script>
 
