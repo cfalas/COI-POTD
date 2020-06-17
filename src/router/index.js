@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import POTD from '../views/POTD.vue'
 import ProblemsList from '../views/ProblemsList.vue'
 import ProblemView from '../views/ProblemView.vue'
+import GlobalScoreboard from '@/views/GlobalScoreboard'
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,11 @@ Vue.use(VueRouter)
     name: 'Old Problems',
     component: ProblemsList
   },
+  {
+    path: '/score',
+    name: 'scoreboard',
+    component: GlobalScoreboard,
+  }
 
 ]
 
